@@ -13,6 +13,7 @@ function mergeParams(params) {
         noheader: false,
         headers: undefined,
         headersUpperCase: false,
+        transformHeaders: false,
         flatKeys: false,
         maxRowLength: 0,
         checkColumn: false,

@@ -51,7 +51,10 @@ function convertRowToJson(row, headRow, conv) {
             }
         }
 
-        
+        if (conv.parseParam.transformHeaders && conv.parseParam.transformHeaders[head]) {
+            head = conv.parseParam.transformHeaders[head];
+        }        
+
         var convFunc = getConvFunc(head, i, conv);
         if (convFunc) {
             var convRes = convFunc(item, head, resultRow, row, i);
@@ -117,7 +120,7 @@ function getConvFunc(head, i, conv) {
 }
 function setPath(resultJson, head, value, conv, headIdx) {
     if (!conv.parseRuntime.columnValueSetter[headIdx]) {
-        if (conv.parseParam.flatKeys) {
+        if (conv.parseParam.flatKeys && !conv.parseParam.transformHeaders) {
             conv.parseRuntime.columnValueSetter[headIdx] = flatSetter;
         }
         else {
