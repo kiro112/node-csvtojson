@@ -34,6 +34,7 @@ function processRow(row, conv, index) {
 function convertRowToJson(row, headRow, conv) {
     var hasValue = false;
     var resultRow = {};
+
     for (var i = 0, len = row.length; i < len; i++) {
         var item = row[i];
         if (conv.parseParam.ignoreEmpty && item === '') {
@@ -44,6 +45,13 @@ function convertRowToJson(row, headRow, conv) {
         if (!head || head === "") {
             head = headRow[i] = "field" + (i + 1);
         }
+        else {
+            if (conv.parseParam.headersUpperCase) {
+                head = head.toUpperCase();
+            }
+        }
+
+        
         var convFunc = getConvFunc(head, i, conv);
         if (convFunc) {
             var convRes = convFunc(item, head, resultRow, row, i);

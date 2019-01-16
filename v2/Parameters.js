@@ -12,6 +12,7 @@ function mergeParams(params) {
         // fork: false,
         noheader: false,
         headers: undefined,
+        headersUpperCase: false,
         flatKeys: false,
         maxRowLength: 0,
         checkColumn: false,
