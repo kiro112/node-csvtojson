@@ -239,6 +239,7 @@ Following parameters are supported:
 * **noheader**:Indicating csv data has no header row and first row is data row. Default is false. See [header row](#header-row)
 * **headers**: An array to specify the headers of CSV data. If --noheader is false, this value will override CSV header row. Default: null. Example: ["my field","name"]. See [header row](#header-row)
 * **headersUpperCase**: Convert all headers to upper case. default: false
+* **transformHeaders**: Object Convert headers from key: value, works on combination of flatKeys: true, and transformHeaders: { key: "to.new_key" }
 * **flatKeys**: Don't interpret dots (.) and square brackets in header fields as nested object or array identifiers at all (treat them like regular characters for JSON field identifiers). Default: false.
 * **maxRowLength**: the max character a csv row could have. 0 means infinite. If max number exceeded, parser will emit "error" of "row_exceed". if a possibly corrupted csv data provided, give it a number like 65535 so the parser won't consume memory. default: 0
 * **checkColumn**: whether check column number of a row is the same as headers. If column number mismatched headers number, an error of "mismatched_column" will be emitted.. default: false
